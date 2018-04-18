@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{352504A9-C49F-4CB2-9026-5D2A4B74CE66}</ProjectGuid>
+    <RootNamespace>IDBCommon</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Path.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Path.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\IDBCommon\fastdb\inc</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)d$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\IDBCommon\fastdb\inc</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;4996</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;DISKLESS_CONFIGURATION=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="business\BaseBusiness.cpp" />
+    <ClCompile Include="business\httpclient.cpp" />
+    <ClCompile Include="business\SystemCompanyBusiness.cpp" />
+    <ClCompile Include="business\VersionBusiness.cpp" />
+    <ClCompile Include="cache\cache_center.cpp" />
+    <ClCompile Include="cache\cache_monitor.cpp" />
+    <ClCompile Include="cache\controller\account_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bondbestquote_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bonddeal_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\dcsbonddeal_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bondgroupdetail_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bondgroup_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bondquoterefer_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bondquote_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\bondsmallview_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\brokerbindingtrader_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\chinabondvaluation_cachecontroller.cpp" />
+    <ClCompile Include="cache\controller\logintoken_cachecontroller.cpp" />
+    <ClCompile Include="cache\model\account_cache.cpp" />
+    <ClCompile Include="cache\model\account_group_cache.cpp" />
+    <ClCompile Include="cache\model\account_permission_cache.cpp" />
+    <ClCompile Include="cache\model\bondbestquote_cache.cpp" />
+    <ClCompile Include="cache\model\bonddeal_cache.cpp" />
+    <ClCompile Include="cache\model\bondgroupdetail_cache.cpp" />
+    <ClCompile Include="cache\model\bondgroup_cache.cpp" />
+    <ClCompile Include="cache\model\bondquoterefer_cache.cpp" />
+    <ClCompile Include="cache\model\bondquote_cache.cpp" />
+    <ClCompile Include="cache\model\bondsmallview_cache.cpp" />
+    <ClCompile Include="cache\model\bondtrader_cache.cpp" />
+    <ClCompile Include="cache\model\bondtypeselective_cache.cpp" />
+    <ClCompile Include="cache\model\brokerbindingtrader_cache.cpp" />
+    <ClCompile Include="cache\model\chinabonddeviatedvalue_cache.cpp" />
+    <ClCompile Include="cache\model\chinabondvaluation_cache.cpp" />
+    <ClCompile Include="cache\model\constants_cache.cpp" />
+    <ClCompile Include="cache\model\dcsbonddeal_cache.cpp" />
+    <ClCompile Include="cache\model\holiday_info_cache.cpp" />
+    <ClCompile Include="cache\model\institutionrating_cache.cpp" />
+    <ClCompile Include="cache\model\issuer_info_cache.cpp" />
+    <ClCompile Include="cache\model\issuinginstitution_cache.cpp" />
+    <ClCompile Include="cache\model\logintoken_cache.cpp" />
+    <ClCompile Include="cache\model\province_info_cache.cpp" />
+    <ClCompile Include="cache\model\selectiveinfo_cache.cpp" />
+    <ClCompile Include="cache\model\sw_sector_info_cache.cpp" />
+    <ClCompile Include="cache\model\system_company_cache.cpp" />
+    <ClCompile Include="cache\model\tradinginstitution_cache.cpp" />
+    <ClCompile Include="cache\model\version_cache.cpp" />
+    <ClCompile Include="config.cpp" />
+    <ClCompile Include="connection_manager.cpp" />
+    <ClCompile Include="db\connection_pool.cpp" />
+    <ClCompile Include="db\dbconnector.cpp" />
+    <ClCompile Include="fastdb\class.cpp" />
+    <ClCompile Include="fastdb\compiler.cpp" />
+    <ClCompile Include="fastdb\container.cpp" />
+    <ClCompile Include="fastdb\cursor.cpp" />
+    <ClCompile Include="fastdb\database.cpp" />
+    <ClCompile Include="fastdb\file.cpp" />
+    <ClCompile Include="fastdb\hashtab.cpp" />
+    <ClCompile Include="fastdb\localcli.cpp" />
+    <ClCompile Include="fastdb\query.cpp" />
+    <ClCompile Include="fastdb\repsock.cpp" />
+    <ClCompile Include="fastdb\rtree.cpp" />
+    <ClCompile Include="fastdb\server.cpp" />
+    <ClCompile Include="fastdb\stdtp.cpp" />
+    <ClCompile Include="fastdb\symtab.cpp" />
+    <ClCompile Include="fastdb\sync.cpp" />
+    <ClCompile Include="fastdb\ttree.cpp" />
+    <ClCompile Include="fastdb\w32sock.cpp" />
+    <ClCompile Include="fastdb\wwwapi.cpp" />
+    <ClCompile Include="fastdb\xml.cpp" />
+    <ClCompile Include="include\cache_def.cpp" />
+    <ClCompile Include="include\common.cpp" />
+    <ClCompile Include="include\constants.cpp" />
+    <ClCompile Include="include\pinyin.cpp" />
+    <ClCompile Include="include\text_export.cpp" />
+    <ClCompile Include="increment\increment_cache.cpp" />
+    <ClCompile Include="increment\increment_cache_manager.cpp" />
+    <ClCompile Include="monitor\chinabondvaluation_monitor.cpp" />
+    <ClCompile Include="monitor\monitor.cpp" />
+    <ClCompile Include="msg2db\msg_log_service.cpp" />
+    <ClCompile Include="msg2db\msg_helper.cpp" />
+    <ClCompile Include="include\logger.cpp" />
+    <ClCompile Include="object\field.cpp" />
+    <ClCompile Include="service\publish_manager.cpp" />
+    <ClCompile Include="service\send_service.cpp" />
+    <ClCompile Include="service\service.cpp" />
+    <ClCompile Include="sync\thread_sync.cpp" />
+    <ClCompile Include="util\excel\excelengine.cpp" />
+    <ClCompile Include="util\pugixml\pugixml.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="business\BaseBusiness.h" />
+    <ClInclude Include="business\httpclient.h" />
+    <ClInclude Include="business\SystemCompanyBusiness.h" />
+    <ClInclude Include="business\VersionBusiness.h" />
+    <ClInclude Include="cache\cache_center.h" />
+    <ClInclude Include="cache\cache_controller.h" />
+    <ClInclude Include="cache\cache_controller_declear.h" />
+    <ClInclude Include="cache\cache_monitor.h" />
+    <ClInclude Include="cache\controller\account_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bondbestquote_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bonddeal_cachecontroller.h" />
+    <ClInclude Include="cache\controller\dcsbonddeal_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bondgroupdetail_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bondgroup_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bondquoterefer_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bondquote_cachecontroller.h" />
+    <ClInclude Include="cache\controller\bondsmallview_cachecontroller.h" />
+    <ClInclude Include="cache\controller\brokerbindingtrader_cachecontroller.h" />
+    <ClInclude Include="cache\controller\chinabondvaluation_cachecontroller.h" />
+    <ClInclude Include="cache\controller\logintoken_cachecontroller.h" />
+    <ClInclude Include="cache\model\account_cache.h" />
+    <ClInclude Include="cache\model\account_group_cache.h" />
+    <ClInclude Include="cache\model\account_permission_cache.h" />
+    <ClInclude Include="cache\model\bondbestquote_cache.h" />
+    <ClInclude Include="cache\model\bonddeal_cache.h" />
+    <ClInclude Include="cache\model\bondgroupdetail_cache.h" />
+    <ClInclude Include="cache\model\bondgroup_cache.h" />
+    <ClInclude Include="cache\model\bondquoterefer_cache.h" />
+    <ClInclude Include="cache\model\bondquote_cache.h" />
+    <ClInclude Include="cache\model\bondsmallview_cache.h" />
+    <ClInclude Include="cache\model\bondtrader_cache.h" />
+    <ClInclude Include="cache\model\bondtypeselective_cache.h" />
+    <ClInclude Include="cache\model\brokerbindingtrader_cache.h" />
+    <ClInclude Include="cache\model\chinabonddeviatedvalue_cache.h" />
+    <ClInclude Include="cache\model\chinabondvaluation_cache.h" />
+    <ClInclude Include="cache\model\constants_cache.h" />
+    <ClInclude Include="cache\model\dcsbonddeal_cache.h" />
+    <ClInclude Include="cache\model\holiday_info_cache.h" />
+    <ClInclude Include="cache\model\institutionrating_cache.h" />
+    <ClInclude Include="cache\model\issuer_info_cache.h" />
+    <ClInclude Include="cache\model\issuinginstitution_cache.h" />
+    <ClInclude Include="cache\model\logintoken_cache.h" />
+    <ClInclude Include="cache\model\province_info_cache.h" />
+    <ClInclude Include="cache\model\selectiveinfo_cache.h" />
+    <ClInclude Include="cache\model\sw_sector_info_cache.h" />
+    <ClInclude Include="cache\model\system_company_cache.h" />
+    <ClInclude Include="cache\model\tradinginstitution_cache.h" />
+    <ClInclude Include="cache\model\version_cache.h" />
+    <ClInclude Include="cache\simple_cache_controller.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="connection_manager.h" />
+    <ClInclude Include="db\connection_pool.h" />
+    <ClInclude Include="db\dbconnector.h" />
+    <ClInclude Include="fastdb\inc\array.h" />
+    <ClInclude Include="fastdb\inc\class.h" />
+    <ClInclude Include="fastdb\inc\cli.h" />
+    <ClInclude Include="fastdb\inc\cliproto.h" />
+    <ClInclude Include="fastdb\inc\compiler.h" />
+    <ClInclude Include="fastdb\inc\config.h" />
+    <ClInclude Include="fastdb\inc\container.h" />
+    <ClInclude Include="fastdb\inc\cursor.h" />
+    <ClInclude Include="fastdb\inc\database.h" />
+    <ClInclude Include="fastdb\inc\date.h" />
+    <ClInclude Include="fastdb\inc\datetime.h" />
+    <ClInclude Include="fastdb\inc\exception.h" />
+    <ClInclude Include="fastdb\inc\fastdb.h" />
+    <ClInclude Include="fastdb\inc\file.h" />
+    <ClInclude Include="fastdb\inc\hashtab.h" />
+    <ClInclude Include="fastdb\inc\localcli.h" />
+    <ClInclude Include="fastdb\inc\query.h" />
+    <ClInclude Include="fastdb\inc\rectangle.h" />
+    <ClInclude Include="fastdb\inc\reference.h" />
+    <ClInclude Include="fastdb\inc\repsock.h" />
+    <ClInclude Include="fastdb\inc\rtree.h" />
+    <ClInclude Include="fastdb\inc\server.h" />
+    <ClInclude Include="fastdb\inc\set.h" />
+    <ClInclude Include="fastdb\inc\sockio.h" />
+    <ClInclude Include="fastdb\inc\stdtp.h" />
+    <ClInclude Include="fastdb\inc\symtab.h" />
+    <ClInclude Include="fastdb\inc\sync.h" />
+    <ClInclude Include="fastdb\inc\sync_w32.h" />
+    <ClInclude Include="fastdb\inc\timeseries.h" />
+    <ClInclude Include="fastdb\inc\ttree.h" />
+    <ClInclude Include="fastdb\inc\unisock.h" />
+    <ClInclude Include="fastdb\inc\w32sock.h" />
+    <ClInclude Include="fastdb\inc\wince.h" />
+    <ClInclude Include="fastdb\inc\wwwapi.h" />
+    <ClInclude Include="include\cache_def.h" />
+    <ClInclude Include="include\common.h" />
+    <ClInclude Include="include\constants.h" />
+    <ClInclude Include="include\fid.h" />
+    <ClInclude Include="include\logger.h" />
+    <ClInclude Include="include\pinyin.h" />
+    <ClInclude Include="include\text_export.h" />
+    <ClInclude Include="increment\increment_cache.h" />
+    <ClInclude Include="increment\increment_cache_manager.h" />
+    <ClInclude Include="monitor\chinabondvaluation_monitor.h" />
+    <ClInclude Include="monitor\monitor.h" />
+    <ClInclude Include="msg2db\msg_log_service.h" />
+    <ClInclude Include="msg2db\msg_cache.h" />
+    <ClInclude Include="msg2db\msg_helper.h" />
+    <ClInclude Include="object\accountrole.h" />
+    <ClInclude Include="object\bond.h" />
+    <ClInclude Include="object\bonddeal.h" />
+    <ClInclude Include="object\completedquote.h" />
+    <ClInclude Include="object\DcsHistoryDetail.h" />
+    <ClInclude Include="object\field.h" />
+    <ClInclude Include="object\management.h" />
+    <ClInclude Include="object\quote.h" />
+    <ClInclude Include="service\publish_manager.h" />
+    <ClInclude Include="service\send_service.h" />
+    <ClInclude Include="service\service.h" />
+    <ClInclude Include="sync\sync.h" />
+    <ClInclude Include="sync\thread_sync.h" />
+    <ClInclude Include="util\excel\excelengine.h" />
+    <ClInclude Include="util\pugixml\pugiconfig.hpp" />
+    <ClInclude Include="util\pugixml\pugixml.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile.am" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

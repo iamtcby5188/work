@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="business">
+      <UniqueIdentifier>{348850df-2047-4327-9221-608cfe9d80b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cache">
+      <UniqueIdentifier>{61a923bd-0178-4064-8a9e-e8e5a7ae7316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="monitor">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{3380c0eb-e56c-42c3-8293-7e53542bbb47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{4bbc651f-43d3-473c-8bac-380b822c4c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sync">
+      <UniqueIdentifier>{0580769e-7c92-4b8f-874e-7ebfbdac8806}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="business\Makefile.am">
+      <Filter>business</Filter>
+    </None>
+    <None Include="cache\Makefile.am">
+      <Filter>cache</Filter>
+    </None>
+    <None Include="monitor\Makefile.am">
+      <Filter>monitor</Filter>
+    </None>
+    <None Include="Resource\BasicDataServerCfg.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="Resource\sqlquery.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="Resource\CommonServerCfg.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="sync\Makefile.am">
+      <Filter>sync</Filter>
+    </None>
+    <None Include="service\Makefile.am">
+      <Filter>service</Filter>
+    </None>
+    <None Include="Makefile.am" />
+    <None Include="Resource\log4cxx.properties">
+      <Filter>Resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="business\bondbusiness.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="cache\cache_manager.cpp">
+      <Filter>cache</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\tradinginstitution_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\account_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\bondsmallview_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\bondtrader_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\brokerbindingtrader_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\chinabonddeviatedvalue_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\tradinginstitution_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\account_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\bondsmallview_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\bondtrader_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\brokerbindingtrader_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\chinabonddeviatedvalue_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="service\sync_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondservice.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\management_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\service_manager.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="sync\institutionrating_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\institutionrating_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="CRMConnectionService.cpp" />
+    <ClCompile Include="CrmProto.pb.cc" />
+    <ClCompile Include="business\productfavor_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="service\productfavor_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="business\bondbusiness.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="cache\cache_manager.h">
+      <Filter>cache</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\tradinginstitution_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\account_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\bondsmallview_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\bondtrader_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\brokerbindingtrader_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\chinabonddeviatedvalue_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\tradinginstitution_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\account_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\bondsmallview_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\bondtrader_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\brokerbindingtrader_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\chinabonddeviatedvalue_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="service\sync_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondservice.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\management_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\service_manager.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\institutionrating_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\institutionrating_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="CRMConnectionService.h" />
+    <ClInclude Include="CrmProto.pb.h" />
+    <ClInclude Include="service\productfavor_service.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="business\productfavor_business.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

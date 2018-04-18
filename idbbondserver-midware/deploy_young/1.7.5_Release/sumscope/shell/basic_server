@@ -1,0 +1,51 @@
+#!/bin/sh
+
+SHELL_PATH=/opt/sumscope/newbond/shell
+SERVER_NAME=BasicDataServer
+
+islog="true"
+log_file='/opt/sumscope/newbond/cluster.log'
+
+source ${SHELL_PATH}/func.sh
+RETVAL=1
+
+
+case "$1" in
+    start)
+        if [ $islog = "true" ]; then 
+           echo `date "+%H:%M:%S"`" start  "${SERVER_NAME}"..."  >> $log_file
+        fi
+
+        start_server ${SERVER_NAME}
+        RETVAL=$?
+        if [ $islog = "true" ]; then
+           echo `date "+%H:%M:%S"`" start  "${SERVER_NAME}"  end..."${RETVAL}  >> $log_file
+        fi
+        ;;
+    stop)
+        if [ $islog = "true" ]; then 
+           echo `date "+%H:%M:%S"`" stop   "${SERVER_NAME}"..."  >> $log_file
+        fi
+
+        stop_server ${SERVER_NAME}
+        RETVAL=$?
+
+        if [ $islog = "true" ]; then 
+           echo `date "+%H:%M:%S"`" stop   "${SERVER_NAME}"  end..."${RETVAL}  >> $log_file
+        fi
+        ;;
+    status)
+        status_server ${SERVER_NAME}
+        RETVAL=$?
+
+        if [ $islog = "true" ]; then 
+           echo `date "+%H:%M:%S"`" status "${SERVER_NAME}"..."${RETVAL}  >> $log_file
+        fi
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status}"
+        ;;
+esac
+
+exit ${RETVAL}
+

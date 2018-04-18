@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SQL>
+  <FetchBondSmallViewSQL>
+		SELECT bsv.listed_market,
+		bsv.bond_key_listed_market,
+		bsv.bond_id,
+		bsv.bond_subtype,
+		bsv.issuer_rating_current,
+		bsv.maturity_term,
+		bsv.create_date,
+		bsv.short_name,
+		bsv.warranter,
+		bsv.coupon_type,
+		bsv.rating_augment,
+		bsv.rating_date,
+		bsv.option_type,
+		bsv.pin_yin,
+		bsv.pin_yin_full,
+		bsv.delflag,
+		bsv.coupon_rate_current,
+		bsv.maturity_date,
+		bsv.listed_date,
+		bsv.delisted_date,
+		bsv.issuer_code,
+		bsv.next_coupon_date,
+		bsv.redemption_no,
+		bsv.is_cross_mkt,
+		bsv.is_mortgage,
+		bsv.rating_current,
+		bsv.bond_key,
+		bsv.mkt_type,
+		bsv.interest_start_date,
+		bsv.frn_index_id,
+		bsv.fixing_ma_days,
+		bsv.coupon_rate_spread,
+		bsv.option_date,
+		bsv.issue_amount,
+		bsv.underwriter_code,
+		bsv.issuer_rating_institution_code,
+		bsv.term_unit,
+		bsv.rating_institution_code,
+		bsv.is_municipal,
+		bsv.issuer_rating_current_npy,
+		bsv.rating_current_npy,
+		bsv.issue_year,
+		bsv.ent_cor,
+		IF(bsv.coupon_type = 'FRN', IF(bsv.coupon_rate_spread IS NOT NULL, CONCAT(bsv.coupon_rate_spread, '%'), NULL), NULL) AS coupon_rate_spread_client,
+		IF(bsv.option_date IS NOT NULL, CONCAT(ROUND(DATEDIFF(bsv.option_date, bsv.interest_start_date)/365,2), '+', ROUND(DATEDIFF(bsv.maturity_date, bsv.option_date)/365,2)), NULL) AS option_type_client,
+		IF(bsv.redemption_no > 0, '是', '') AS redemption_no_client,
+		CONCAT(ROUND(bsv.maturity_term, 2), bsv.term_unit) AS maturity_term_client,
+		IF(bsv.coupon_rate_current IS NULL OR bsv.coupon_rate_current = 0, NULL, CONCAT(bsv.coupon_rate_current, '%')) AS coupon_rate_current_client,
+		IF(bsv.option_date IS NULL OR bsv.option_date >= bsv.maturity_date OR bsv.option_date >= m.tmp_date, bsv.maturity_date, bsv.option_date) AS sort_remain,
+		IF((bsv.delisted_date IS NULL OR bsv.delisted_date > m.tmp_date) AND bsv.maturity_date > m.tmp_date, FALSE, TRUE) AS is_expired,
+		m.code AS goods_type_client,
+		m.type_id AS bond_goods_type_id,
+		m.product AS product_type
+		FROM bond_small_view bsv,
+		(SELECT bts.id, bts.type_id, bts.selective_code, bgt.name, bgt.code, bgt.description, bgt.product, cast(CURRENT_DATE AS DECIMAL(8,0)) AS tmp_date
+		FROM bond_type_selective bts
+		LEFT JOIN bond_goods_type bgt ON bts.status='1'
+		AND bgt.status='1' AND bts.type_id=bgt.id)m
+		WHERE bsv.delflag='0'
+		AND bsv.bond_subtype=m.selective_code
+		AND m.product IN('BCO','BNC');
+	</FetchBondSmallViewSQL>
+	<FetchIssuingInstitutionSQL>
+		SELECT DISTINCT
+		id,
+		institution_code,
+		institution_type,
+		full_name_c,
+		delflag,
+		Pin_Yin,
+		Pin_Yin_Full,
+		institution_subtype,
+		institution_Rating
+		FROM institution
+		WHERE delflag = '0';
+	</FetchIssuingInstitutionSQL>
+	<FetchTradingInstitutionSQL>
+		SELECT
+		id,
+		company_id,
+		name,
+		name_en,
+		description,
+		code,
+		status,
+		attribute,
+		attribute1,
+		attribute2,
+		attribute3,
+		attribute4,
+		attribute5,
+		bank_type,
+		full_name,
+		city,
+		full_name_en,
+		pinyin,
+		pinyin_full,
+		city_name,
+		modify_time,
+		create_time,
+		crm_id
+		FROM bond_bank AS trading_institution
+		WHERE status = '1';
+	</FetchTradingInstitutionSQL>
+	<FetchSelectiveInfoSQL>
+		SELECT
+		id,
+		selective_code,
+		selective_content,
+		group_name,
+		delflag
+		FROM selective_info WHERE delflag = '0'
+		ORDER BY group_name;
+	</FetchSelectiveInfoSQL>
+	<FetchBondQuoteSQL>
+		SELECT
+		id,
+		company_id,
+		bond_key,
+		listed_market,
+		bond_key_listed_market,
+		goods_code,
+		goods_id,
+		bank_name,
+		bank_id,
+		symbol,
+		IF(price is NULL, -999, price) AS price,
+		IF(net_price is NULL, -999, net_price) AS net_price,
+		IF(full_price is NULL, -999, full_price) AS full_price,
+		IF(yield is NULL, -999, yield) AS yield,
+		volume,
+		status,
+		IF(spread is NULL, -999, spread) AS spread,
+		deal_status,
+		deal_time,
+		operator_id,
+		review_id,
+		create_time,
+		agent_code,
+		rate_type,
+		internally,
+		goods_short_name,
+		IF(return_point is NULL, -999, return_point) AS return_point,
+		delivery_date,
+		goods_term,
+		goods_level,
+		rebate,
+		bank_agent_id,
+		flag_vip,
+		flag_bad,
+		flag_bargain,
+		flag_Relation,
+		price_description,
+		goods_type,
+		profit_code,
+		description,
+		goods_name,
+		option_type,
+		trader_id,
+		quote_type,
+		clear_speed,
+		exercise,
+		send_status,
+		calculate_status
+		FROM bond_offer WHERE status = '1' AND deal_status = '0';
+	</FetchBondQuoteSQL>
+	<FetchBondQuoteReferSQL>
+		SELECT
+		id,
+		company_id,
+		bond_key,
+		listed_market,
+		bond_key_listed_market,
+		goods_code,
+		goods_id,
+		bank_name,
+		bank_id,
+		symbol,
+		IF(price is NULL, -999, price) AS price,
+		IF(net_price is NULL, -999, net_price) AS net_price,
+		IF(full_price is NULL, -999, full_price) AS full_price,
+		IF(yield is NULL, -999, yield) AS yield,
+		volume,
+		status,
+		IF(spread is NULL, -999, spread) AS spread,
+		deal_status,
+		deal_time,
+		operator_id,
+		review_id,
+		create_time,
+		agent_code,
+		rate_type,
+		internally,
+		goods_short_name,
+		IF(return_point is NULL, -999, return_point) AS return_point,
+		delivery_date,
+		goods_term,
+		goods_level,
+		rebate,
+		bank_agent_id,
+		flag_vip,
+		flag_bad,
+		flag_bargain,
+		flag_Relation,
+		price_description,
+		goods_type,
+		profit_code,
+		description,
+		goods_name,
+		option_type,
+		trader_id,
+		quote_type,
+		clear_speed,
+		exercise,
+		send_status,
+		calculate_status
+		FROM bond_offer WHERE status = '1' AND deal_status = '2';
+	</FetchBondQuoteReferSQL>
+	<FetchBondBestQuoteSQL>
+		SELECT
+		Id,
+		company_id,
+		goods_id,
+		bond_key,
+		listed_market,
+		bond_key_listed_market,
+		goods_code,
+		short_name,
+		goods_term,
+		goods_type,
+		goods_level,
+		profit_code,
+		ofr_agent_code,
+		IF(ofr_price is NULL, -999, ofr_price) AS ofr_price,
+		ofr_volume,
+		ofr_flag_vip,
+		ofr_flag_bad,
+		ofr_flag_bargain,
+		bid_agent_code,
+		IF(bid_price is NULL, -999, bid_price) AS bid_price,
+		bid_volume,
+		bid_flag_vip,
+		bid_flag_bad,
+		bid_flag_bargain,
+		status,
+		create_time,
+		underwriter,
+		bid_price_description,
+		ofr_price_description,
+		underwriter_type,
+		option_type,
+		bid_offer_count,
+		ofr_offer_count,
+		ofr_agent_id,
+		bid_agent_id,
+		rate_type,
+		bid_offer_id,
+		ofr_offer_id,
+		internally_bid_offer_id,
+		internally_ofr_offer_id,
+		IF(bid_before_price is NULL, -999, bid_before_price) AS bid_before_price,
+		IF(ofr_before_price is NULL, -999, ofr_before_price) AS ofr_before_price,
+		internally,
+		bid_flag_relation,
+		ofr_flag_relation,
+		ofr_quote_type,
+		bid_quote_type,
+		IF(bid_return_point is NULL, -999, bid_return_point) AS bid_return_point,
+		IF(ofr_return_point is NULL, -999, ofr_return_point) AS ofr_return_point,
+		IF(bid_full_price is NULL, -999, bid_full_price) AS bid_full_price,
+		IF(ofr_full_price is NULL, -999, ofr_full_price) AS ofr_full_price,
+		IF(bid_yield is NULL, -999, bid_yield) AS bid_yield,
+		IF(ofr_yield is NULL, -999, ofr_yield) AS ofr_yield,
+		IF(bid_spread is NULL, -999, bid_spread) AS bid_spread,
+		IF(ofr_spread is NULL, -999, ofr_spread) AS ofr_spread,
+		bid_clear_speed,
+		ofr_clear_speed,
+		bid_delivery_date,
+		ofr_delivery_date,
+		bid_exercise,
+		ofr_exercise,
+		bid_rebate,
+		ofr_rebate,
+		bid_offer_num,
+		ofr_offer_num,
+		IF(bid_net_price is NULL, -999, bid_net_price) AS bid_net_price,
+		IF(ofr_net_price is NULL, -999, ofr_net_price) AS ofr_net_price,
+		IF(internally_bid_price is NULL, -999, internally_bid_price) AS internally_bid_price,
+		IF(internally_ofr_price is NULL, -999, internally_ofr_price) AS internally_ofr_price,
+		IF(internally_bid_return_point is NULL, -999, internally_bid_return_point) AS internally_bid_return_point,
+		IF(internally_ofr_return_point is NULL, -999, internally_ofr_return_point) AS internally_ofr_return_point,
+		internally_bid_rebate,
+		internally_ofr_rebate
+		FROM bond_best_offer WHERE status = '1';
+	</FetchBondBestQuoteSQL>
+	<FetchBondDealSQL>
+		SELECT
+		id,
+		company_id,
+    		bond_key_listed_market,
+    		create_time,
+    		urgent,
+    		deal_type,
+    		deal_time,
+		updateTime,
+		odd_numbers,
+		IF(sequence_number is NULL, 0, sequence_number) AS sequence_number,
+		goods_id,
+		goods_code,
+		goods_short_name,
+		bond_key,
+		listed_market,
+		maturity_date,
+		IF(price is NULL, -999, price) AS price,
+		IF(return_point is NULL, -999, return_point) AS return_point,
+		rebate,
+		volume,
+		currency,
+		exercise,
+		time_style,
+		settlement_date,
+		IF(yield is NULL, -999, yield) AS yield,
+		IF(spread is NULL, -999, spread) AS spread,
+		IF(net_price is NULL, -999, net_price) AS net_price,
+		IF(full_price is NULL, -999, full_price) AS full_price,
+		bid_bank_id,
+		bid_bank_code,
+		bid_bank_city,
+		bid_agent_id,
+		bid_agent_code,
+		bidBankAgentName,
+		bid_broker_id,
+		bidBrokerIdB,
+		bidBrokerIdC,
+		bidBrokerIdD,
+		bid_broker_name,
+		bidBrokerCodeA,
+		bidBrokerCodeB,
+		bidBrokerCodeC,
+		bidBrokerCodeD,
+		bidPercentA,
+		bidPercentB,
+		bidPercentC,
+		bidPercentD,
+		bid_charge,
+		bidIsNoBrokerage,
+		bid_brokerrage,
+		bidBrokerrageRemark,
+		bidTradeMode,
+		bidNoConfirm,
+		bidNoComments,
+		bid_bridge,
+		ofr_bank_id,
+		ofr_bank_code,
+		ofr_bank_city,
+		ofr_agent_id,
+		ofr_agent_code,
+		ofrBankAgentName,
+		ofr_broker_id,
+		ofrBrokerIdB,
+		ofrBrokerIdC,
+		ofrBrokerIdD,
+		ofr_broker_name,
+		ofrBrokerCodeA,
+		ofrBrokerCodeB,
+		ofrBrokerCodeC,
+		ofrBrokerCodeD,
+		ofrPercentA,
+		ofrPercentB,
+		ofrPercentC,
+		ofrPercentD,
+		ofr_charge,
+		ofrIsNoBrokerage,
+		ofr_brokerrage,
+		ofrBrokerrageRemark,
+		ofrTradeMode,
+		ofrNoConfirm,
+		ofrNoComments,
+		ofr_bridge,
+		bid_remarks,
+		remarks,
+		ofr_remarks,
+		specialPartyBid,
+		specialPartyOfr,
+		specialTerms,
+		feedback,
+		delivery_type,
+		total_price,
+		internally,
+		bid_check,
+		ofr_check,
+		deal_status,
+		quote_type,
+		description,
+		status,
+		send_status,
+		group_flag,
+		confirm_account,
+		confirm_date,
+		bid_check_date,
+		ofr_check_date,
+		bid_trader_check,
+		bid_trader_check_date,
+		ofr_trader_check,
+		ofr_trader_check_date,
+		is_print,
+		clear_speed,
+		delivery_date,
+		Traded_Date AS traded_date,
+		bid_brokerage_rate,
+		ofr_brokerage_rate,
+		bid_discount,
+		ofr_discount
+		FROM bond_deal WHERE status = '1';
+	</FetchBondDealSQL>
+	<FetchBondTraderSQL>
+		SELECT
+		id,
+		company_id,
+		name,
+		code,
+		f_code,
+		attribute,
+		attribute1,
+		attribute2,
+		attribute3,
+		attribute4,
+		attribute5,
+		create_time,
+		status,
+		flag,
+		flag_vip,
+		flag_bad,
+		flag_bargain,
+		bank_id,
+		customer_id,
+		pinyin,
+		pinyin_full,
+		modify_time,
+		crm_id
+		FROM bond_bank_agent WHERE status = '1';
+	</FetchBondTraderSQL>
+	<FetchChinaBondValuationSQL>
+		SELECT id, bond_id, listed_market, valuation_yield, valuation_net_price, 
+			valuation_date, status, modify_time, bond_key_listed_market, 
+			val_modified_duration, val_convexity, val_basis_point_value 
+			FROM (SELECT
+			cbv.id,
+			cbv.bond_id,
+			cbv.listed_market,
+			cbv.valuation_yield,
+			cbv.valuation_net_price,
+			cbv.valuation_date,
+			cbv.status,
+			cbv.modify_time,
+			cbv.bond_key_listed_market,
+			cbv.val_modified_duration,
+			cbv.val_convexity,
+			cbv.val_basis_point_value
+			FROM china_bond_valuation cbv
+			INNER JOIN bond_small_view bsv
+			ON cbv.bond_id = bsv.bond_id AND cbv.listed_market = bsv.listed_market AND bsv.delflag = '0'
+			WHERE cbv.status = '1'
+			ORDER BY cbv.valuation_date DESC) tmp
+		GROUP BY bond_id ORDER BY valuation_date DESC;
+	</FetchChinaBondValuationSQL>
+	<FetchBondGroupSQL>
+		SELECT
+		id,
+		company_id,
+		ua_id,
+		group_name,
+		status,
+		create_time,
+		ua_flag,
+		filter_condition
+		FROM bond_goods_group
+		WHERE ua_flag = '2' AND status = '1';
+	</FetchBondGroupSQL>
+	<FetchBondGroupDetailSQL>
+		SELECT
+		id,
+		group_id,
+		create_time,
+		bond_key_listed_market
+		FROM bond_group_relation;
+	</FetchBondGroupDetailSQL>
+	<FetchAccountSQL>
+		SELECT DISTINCT
+		ia.id,
+		ia.company_id,
+		sc.name as company_name,
+		ia.account_code,
+		ia.username,
+		ia.password,
+		ia.display_name,
+		ia.mobile,
+		ia.telephone,
+		ia.email,
+		ia.rm,
+		ia.msn,
+		ia.qq,
+		ia.address,
+		ia.account_type,
+		ia.is_forbidden,
+		ia.create_time,
+		ia.modify_time,
+		ia.create_by,
+		ia.modify_by,
+		ia.status,
+		iarr.role_id
+		FROM idb_account ia
+		INNER JOIN idb_bond.sys_company sc
+		ON ia.company_id = sc.id AND sc.status = '1'
+		INNER JOIN idb_account_role_relation iarr
+		ON ia.id = iarr.account_id AND iarr.status = '1'
+		INNER JOIN idb_department d
+		ON d.id = iarr.department_id AND d.status = '1'
+		WHERE d.department_code = 'BOND' AND ia.status = '1'
+	</FetchAccountSQL>
+	<FetchAccountGroupSQL>
+		SELECT
+		agm.account_id,
+		agm.account_group_id,
+		ag.group_name,
+		ag.description AS account_group_description,
+		ag.group_level AS account_group_level,
+		ag.dept_id AS department_id,
+		d.name AS department_name,
+		d.code AS department_code,
+		d.description AS department_description,
+		d.is_public AS department_is_public
+		FROM account_group_member agm
+		INNER JOIN account_group ag
+		ON agm.account_group_id = ag.id AND ag.status = '1'
+		INNER JOIN department d ON ag.dept_id = d.id AND d.status = '1';	
+	</FetchAccountGroupSQL>
+	<FetchAccountPermissionSQL>
+		SELECT
+		agm.account_id,
+		agm.account_group_id,
+		cp.id AS permission_id,
+		cp.name AS permission_name,
+		cp.family AS permission_family
+		FROM account_group_member agm 
+		INNER JOIN account_group_console_permission agcp
+		ON agcp.account_group_id = agm.account_group_id
+		INNER JOIN console_permission cp
+		ON cp.id = agcp.console_permission_id;
+	</FetchAccountPermissionSQL>
+	<FetchBondTypeSelectiveSQL>
+		SELECT
+		bts.id,
+		bts.selective_code,
+		bts.type_id,
+		bts.status,
+		bgt.name,
+		bgt.code,
+		bgt.description,
+		bgt.product
+		FROM bond_type_selective bts
+		LEFT JOIN bond_goods_type bgt ON bts.type_id = bgt.id;
+	</FetchBondTypeSelectiveSQL>
+	<FetchConstantsSQL>
+		SELECT
+		id,
+		name,
+		value,
+		status,
+		create_time,
+		constants_key
+		FROM constants
+		WHERE status = '1' order by constants_key, name, value;
+	</FetchConstantsSQL>
+	<FetchChinaBondDeviatedValueSQL>
+		SELECT
+		Id,
+		company_id,
+		bond_type_id,
+		bond_type_name,
+		deviated_value,
+		status,
+		modify_time
+		FROM china_bond_deviated_value
+		WHERE status = '1';
+	</FetchChinaBondDeviatedValueSQL>
+	<FetchHotKeySQL>
+		SELECT
+		Id,
+		HotKey,
+		FunctionName,
+		Description,
+		Function,
+		Params,
+		ParamSize
+		FROM hot_key;
+	</FetchHotKeySQL>
+	<FetchBrokerBindingTraderSQL>
+		SELECT
+		id,
+		account_id,
+		status,
+		create_time,
+		bank_agent_id,
+		sort
+		FROM bond_bank_account
+		WHERE status = '1';
+	</FetchBrokerBindingTraderSQL>
+	<FetchHolidayInfoSQL>
+		SELECT
+		id,
+		delflag,
+		create_date,
+		modify_date,
+		username,
+		inputer,
+		checker,
+		sts,
+		country,
+		market_type,
+		holiday_date,
+		holiday_reason
+		FROM holiday_info
+		WHERE delflag = '0' AND sts = '0' AND market_type = "CIB" order by holiday_date;
+	</FetchHolidayInfoSQL>
+	<FetchLoginTokenSQL>
+		SELECT
+		ID,
+		ACCOUNT_ID,
+		TOKEN,
+		ACTIVATION,
+		CLIENT_TYPE,
+		IP,
+		SERVER,
+		STATUS
+		FROM idb_login_status;
+	</FetchLoginTokenSQL>
+	<FetchIssuerInfoSQL>
+		SELECT 
+		id,
+		delflag,
+		create_date,
+		modify_date,
+		Institution_Code,
+		Issuer_Name,
+		Issuer_Type,
+		SW_Sector,
+		SW_Subsector,
+		SW_Sector_Code,
+		SW_Subsector_Code,
+		Province,
+		City,
+		Province_Code,
+		CBRC_Financing_Platform	
+		FROM p_issuer_info
+		WHERE delflag = '0';
+	</FetchIssuerInfoSQL>
+	<FetchSwSectorInfoSQL>
+		SELECT 
+		id,
+		delflag,
+		create_date,
+		modify_date,
+		SW_External_Code,
+		SW_Internal_Code,
+		SW_Level,
+		SW_Name,
+		SW_English_Name,
+		SW_Upper_Grade_Code,
+		SW_Status
+		FROM p_sw_sector_info WHERE delflag = '0';
+	</FetchSwSectorInfoSQL>
+	<FetchProvinceInfoSQL>
+		SELECT id, Area_Code, Area_English_Name, Area_Name, Area_Level, Area_Upper_Grade_Code FROM p_province_info WHERE delflag = '0';
+	</FetchProvinceInfoSQL>
+	<FetchSystemCompanySQL>
+		SELECT id, name, status FROM sys_company where status='1';
+	</FetchSystemCompanySQL>
+	<FetchInstitutionRatingSQL>
+		SELECT id, delflag, sts, institution_code, institution_type, rating_institution_code, rating_date, rate, outlook
+		FROM(SELECT * FROM p_institution_rating WHERE delflag = '0' AND sts = '0' AND institution_type = 'ISR' AND rating_institution_code != 'Z000647' ORDER BY rating_date DESC) AS tmp
+		GROUP BY institution_code;
+	</FetchInstitutionRatingSQL>
+</SQL>

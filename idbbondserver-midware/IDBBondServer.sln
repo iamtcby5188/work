@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IDBBondServer", "IDBBondServer\IDBBondServer.vcxproj", "{BE51E14F-602B-43C1-99A1-284454D1DED1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{352504A9-C49F-4CB2-9026-5D2A4B74CE66} = {352504A9-C49F-4CB2-9026-5D2A4B74CE66}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IDBCommon", "IDBCommon\IDBCommon.vcxproj", "{352504A9-C49F-4CB2-9026-5D2A4B74CE66}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MarketDataServer", "MarketDataServer\MarketDataServer.vcxproj", "{3EE72753-7247-4DB5-B2CC-CFEB8C453C01}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicDataServer", "BasicDataServer\BasicDataServer.vcxproj", "{E008934A-C889-4AD6-B6CA-8067B8C98552}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE51E14F-602B-43C1-99A1-284454D1DED1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE51E14F-602B-43C1-99A1-284454D1DED1}.Debug|Win32.Build.0 = Debug|Win32
+		{BE51E14F-602B-43C1-99A1-284454D1DED1}.Release|Win32.ActiveCfg = Release|Win32
+		{BE51E14F-602B-43C1-99A1-284454D1DED1}.Release|Win32.Build.0 = Release|Win32
+		{352504A9-C49F-4CB2-9026-5D2A4B74CE66}.Debug|Win32.ActiveCfg = Debug|Win32
+		{352504A9-C49F-4CB2-9026-5D2A4B74CE66}.Debug|Win32.Build.0 = Debug|Win32
+		{352504A9-C49F-4CB2-9026-5D2A4B74CE66}.Release|Win32.ActiveCfg = Release|Win32
+		{352504A9-C49F-4CB2-9026-5D2A4B74CE66}.Release|Win32.Build.0 = Release|Win32
+		{3EE72753-7247-4DB5-B2CC-CFEB8C453C01}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3EE72753-7247-4DB5-B2CC-CFEB8C453C01}.Debug|Win32.Build.0 = Debug|Win32
+		{3EE72753-7247-4DB5-B2CC-CFEB8C453C01}.Release|Win32.ActiveCfg = Release|Win32
+		{3EE72753-7247-4DB5-B2CC-CFEB8C453C01}.Release|Win32.Build.0 = Release|Win32
+		{E008934A-C889-4AD6-B6CA-8067B8C98552}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E008934A-C889-4AD6-B6CA-8067B8C98552}.Debug|Win32.Build.0 = Debug|Win32
+		{E008934A-C889-4AD6-B6CA-8067B8C98552}.Release|Win32.ActiveCfg = Release|Win32
+		{E008934A-C889-4AD6-B6CA-8067B8C98552}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

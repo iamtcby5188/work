@@ -1,0 +1,33 @@
+<Config>
+  <Connection>
+    <Host>tcp://192.168.1.50:3306</Host>
+    <User>artogrid</User>
+    <Password>artogrid</Password>
+    <DataBase></DataBase>
+    <PoolSize>5</PoolSize>
+  </Connection>
+  <SDBus>
+    <Main>
+      <Url>127.0.0.1</Url>
+    </Main>
+  </SDBus>
+  <Queue>
+    <Main>Queue.Bond.QQ2IDB.1</Main>    
+  </Queue>
+
+  <FastDB>
+    <CacheName>QQ2IDBCache.1</CacheName>
+    <CacheSize>1024</CacheSize>    
+  </FastDB>
+
+  <CurrentCompany>
+    <ID>20</ID>
+    <Name>OTHER</Name>
+  </CurrentCompany>
+
+  <LogMsg>
+    <Enable>True</Enable>
+    <Destination>File</Destination>
+  </LogMsg>
+  <CommonServerCfgFilePath></CommonServerCfgFilePath>
+</Config>

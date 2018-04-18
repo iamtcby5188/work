@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cache">
+      <UniqueIdentifier>{53adba49-0c8d-4acf-b442-fff6eda1168e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{6366d987-a0e6-4eba-abdd-0fa87c744651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="business">
+      <UniqueIdentifier>{8c69aff5-5916-4851-9c3f-74976399b685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{022cccea-fb23-4216-a657-d0d5490b3a49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cache\cache_manager.cpp">
+      <Filter>cache</Filter>
+    </ClCompile>
+    <ClCompile Include="service\service_manager.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\productfavor_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="business\productfavor_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cache\cache_manager.h">
+      <Filter>cache</Filter>
+    </ClInclude>
+    <ClInclude Include="service\service_manager.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\productfavor_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="business\productfavor_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\ProductFavorServerCfg.xml">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+</Project>

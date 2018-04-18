@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="business">
+      <UniqueIdentifier>{947ca11d-ff8e-497b-90cb-84a762e8b40b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cache">
+      <UniqueIdentifier>{c862a3f4-a26f-4a65-9124-697aa74459a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="datamanager">
+      <UniqueIdentifier>{9d99469d-570f-4534-be10-be37cca168d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{53198a0b-2827-48aa-9853-28a7a6669894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{db3f25aa-6359-41de-83e7-33c9b4f78931}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sync">
+      <UniqueIdentifier>{17021a09-7dbf-4d3b-a739-390f5c860960}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondbestquote_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondbestquotecalc_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondcompletedquote_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bonddeal_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondquote_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="cache\cache_manager.cpp">
+      <Filter>cache</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\bestquote_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\deal_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\quote_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\referquote_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\valuation_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondbestquote_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondcompletedquote_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bonddeal_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondquote_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\heartbeat_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\service_manager.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\sync_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\chinabondvaluation_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\dcs_deal_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="business\dcsbonddeal_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="service\dcsbonddeal_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="business\bondbestquote_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondbestquotecalc_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondcompletedquote_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bonddeal_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondquote_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="cache\cache_manager.h">
+      <Filter>cache</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\bestquote_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\deal_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\quote_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\referquote_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\valuation_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondbestquote_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondcompletedquote_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bonddeal_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondquote_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\heartbeat_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\service_manager.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\sync_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\chinabondvaluation_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\dcs_deal_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="business\dcsbonddeal_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="service\dcsbonddeal_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="business\Makefile.am">
+      <Filter>business</Filter>
+    </None>
+    <None Include="cache\Makefile.am">
+      <Filter>cache</Filter>
+    </None>
+    <None Include="datamanager\Makefile.am">
+      <Filter>datamanager</Filter>
+    </None>
+    <None Include="Resource\MarketDataServerCfg.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="Resource\sqlquery.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="service\Makefile.am">
+      <Filter>service</Filter>
+    </None>
+    <None Include="sync\Makefile.am">
+      <Filter>sync</Filter>
+    </None>
+    <None Include="Makefile.am" />
+    <None Include="Resource\log4cxx.properties">
+      <Filter>Resource</Filter>
+    </None>
+  </ItemGroup>
+</Project>

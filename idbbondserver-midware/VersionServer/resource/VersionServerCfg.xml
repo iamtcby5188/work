@@ -1,0 +1,12 @@
+<Config>
+  <Connection>
+    <Host>tcp://192.168.1.102:3306</Host>
+    <User>artogrid</User>
+    <Password>artogrid</Password>
+    <DataBase></DataBase>
+  </Connection>
+  
+  <SDBus>
+    <Url>127.0.0.1</Url>        
+  </SDBus>
+</Config>

@@ -1,0 +1,15 @@
+*.opensdf
+*.sdf
+*.vcxproj.user
+Debug/
+Release/
+*.log
+*.suo
+*.ipch
+*.o
+*.in
+*.a
+.deps
+Makefile
+*.m4
+*.cache

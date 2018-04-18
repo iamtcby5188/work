@@ -1,0 +1,135 @@
+#!/bin/sh
+
+processname=IDBBondServer
+
+path=/opt/sumscope/newbond/IDBBondServer
+check_flag_file=/opt/sumscope/newbond/IDBBondServer/bin/log/FastDB.log
+
+islog="true"
+log_file=/opt/sumscope/newbond/cluster.log
+
+
+process_pid=`cat ${path}"/PID"`
+
+fastdb_status=`awk -F ' ' '{print $3}' $check_flag_file`
+RETVAL=0
+
+
+status() {
+ps -fe|grep $process_pid  |grep -v grep   >/dev/null 2>&1
+
+  if [ $? -eq 0 ]; then
+    if [ "$fastdb_status" = "ACTIVE" ]; then
+        echo `date "+%H:%M:%S"`" status "$processname" Running | "$fastdb_status" | ..." ${RETVAL}
+      if [ $islog = "true" ]; then
+        echo `date "+%H:%M:%S"`" status "$processname" Running | "$fastdb_status" | ..." ${RETVAL} >> $log_file
+      fi
+    else
+      RETVAL=1
+        echo `date "+%H:%M:%S"`" status "$processname" Running | "$fastdb_status" | is not Active ..." ${RETVAL}
+      if [ $islog = "true" ]; then
+        echo `date "+%H:%M:%S"`" status "$processname" Running | "$fastdb_status" | is not Active ..." ${RETVAL} >> $log_file
+      fi
+    fi
+  else 
+    RETVAL=1
+        echo `date "+%H:%M:%S"`" status "$processname" stopped.." ${RETVAL} 
+      if [ $islog = "true" ]; then
+        echo `date "+%H:%M:%S"`" status "$processname" stopped.." ${RETVAL} >> $log_file
+      fi
+  fi
+}
+
+start() {
+ps -fe|grep $process_pid  |grep -v grep  >/dev/null 2>&1
+
+
+  if [ $? -eq 0 ]; then
+
+    if [ "$fastdb_status" = "ACTIVE" ]; then
+        echo `date "+%H:%M:%S"`" start  "$processname" is | "$fastdb_status" | ... OK"
+      if [ $islog = "true" ]; then
+        echo `date "+%H:%M:%S"`" start  "$processname" is | "$fastdb_status" | ... OK" >> $log_file 
+      fi
+    else
+      ##fastdb is not active  dont start, return failure
+        echo `date "+%H:%M:%S"`" start  "$processname" is | "$fastdb_status" | ... wait for recovery ... 20s"
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" start  "$processname" is | "$fastdb_status" | ... wait for recovery ... 20s" >> $log_file
+      fi
+      sleep 20s
+        echo `date "+%H:%M:%S"`" start  "$processname" ... started"
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" start  "$processname" ... started" >> $log_file
+      fi
+    fi
+  else
+        echo `date "+%H:%M:%S"`" start  "$processname" is not running"
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" start  "$processname" is not running" >> $log_file
+      fi
+    sleep 1s
+        echo `date "+%H:%M:%S"`" start  "$processname" stop start" 
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" start  "$processname" stop start" >> $log_file
+      fi
+    #RETVAL=1
+  fi
+}
+
+stop() {
+
+  ps -fe|grep $process_pid  |grep -v grep  >/dev/null 2>&1
+
+  if [ $? -eq 0 ]; then
+
+    if [ "$fastdb_status" = "ACTIVE" ]; then
+      ##fastdb is active, kill
+        echo `date "+%H:%M:%S"`" stop   "$processname" is | "$fastdb_status" | ... do nothing"
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" stop   "$processname" is | "$fastdb_status" | ... do nothing" >> $log_file
+      fi
+    else
+      ##fastdb is not active  dont kill
+        echo `date "+%H:%M:%S"`" stop   "$processname" is | "$fastdb_status" | is not Active ... do not kill"
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" stop   "$processname" is | "$fastdb_status" | is not Active ... do not kill" >> $log_file
+      fi
+    fi
+  else
+        echo `date "+%H:%M:%S"`" stop   "$processname" is not start ... do not kill"
+      if [ $islog = "true" ]; then  
+        echo `date "+%H:%M:%S"`" stop   "$processname" is not start ... do not kill" >> $log_file
+      fi
+  fi
+
+}
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    condrestart)
+	echo "Cannot do it, you have to restart it"
+        RETVAL=$?
+        ;;
+    reload)
+        echo "Cannot do it, you have to restart it"
+        RETVAL=$?
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"
+        ;;
+esac
+
+exit $RETVAL

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BE51E14F-602B-43C1-99A1-284454D1DED1}</ProjectGuid>
+    <RootNamespace>IDBBondServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Path.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Path.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4251;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>qpidclientd.lib;qpidcommond.lib;qpidmessagingd.lib;qpidtypesd.lib;IDBCommond.lib;log4cxx.lib;mysqlcppconn.lib;sdbusd.lib;qpid_engined.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y $(ProjectDir)\Resource\*.xml $(TargetDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4251;4996</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>qpidclient.lib;qpidcommon.lib;qpidmessaging.lib;qpidtypes.lib;IDBCommon.lib;log4cxx.lib;mysqlcppconn.lib;sdbus.lib;qpid_engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y $(ProjectDir)\Resource\*.xml $(TargetDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="business\bondbestquotecalc_business.cpp" />
+    <ClCompile Include="business\bondbestquote_business.cpp" />
+    <ClCompile Include="business\bondbestquote_ftp_upload_business.cpp" />
+    <ClCompile Include="business\bondbestquote_shch_ftp_upload_business.cpp" />
+    <ClCompile Include="business\bondcompletedquote_business.cpp" />
+    <ClCompile Include="business\bonddeal_business.cpp" />
+    <ClCompile Include="business\dcsbonddeal_business.cpp" />
+    <ClCompile Include="business\bondquote_business.cpp" />
+    <ClCompile Include="business\calculator_business.cpp" />
+    <ClCompile Include="business\ftpClient.cpp" />
+    <ClCompile Include="business\login_business.cpp" />
+    <ClCompile Include="business\oper_log.cpp" />
+    <ClCompile Include="cache\cache_manager.cpp" />
+    <ClCompile Include="datamanager\account_data_manager.cpp" />
+    <ClCompile Include="datamanager\bond_data_manager.cpp" />
+    <ClCompile Include="datamanager\broker_binding_data_manager.cpp" />
+    <ClCompile Include="datamanager\data_manager.cpp" />
+    <ClCompile Include="datamanager\deviated_value_data_manager.cpp" />
+    <ClCompile Include="datamanager\institution_data_manager.cpp" />
+    <ClCompile Include="datamanager\trader_data_manager.cpp" />
+    <ClCompile Include="DCSConnectionService.cpp" />
+    <ClCompile Include="excel\generateexcel.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MessageResendService.cpp" />
+    <ClCompile Include="monitor\dcsbonddeal_monitor.cpp" />
+    <ClCompile Include="service\bondbestquote_ftp_upload_service.cpp" />
+    <ClCompile Include="service\bondbestquote_service.cpp" />
+    <ClCompile Include="service\bondbestquote_shch_ftp_upload_service.cpp" />
+    <ClCompile Include="service\bondcompletedquote_service.cpp" />
+    <ClCompile Include="service\bonddeal_service.cpp" />
+    <ClCompile Include="service\dcsbonddeal_service.cpp" />
+    <ClCompile Include="service\bondquote_service.cpp" />
+    <ClCompile Include="service\login_service.cpp" />
+    <ClCompile Include="service\qb_sync_service.cpp" />
+    <ClCompile Include="service\service_manager.cpp" />
+    <ClCompile Include="service\sync_service.cpp" />
+    <ClCompile Include="sync\bondbestquote_sync.cpp" />
+    <ClCompile Include="sync\bonddeal_sync.cpp" />
+    <ClCompile Include="sync\bondquote_sync.cpp" />
+    <ClCompile Include="sync\bondreferquote_sync.cpp" />
+    <ClCompile Include="sync\chinabondvaluation_sync.cpp" />
+    <ClCompile Include="sync\dcsbonddeal_sync.cpp" />
+    <ClCompile Include="tprfa_service.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="business\bondbestquotecalc_business.h" />
+    <ClInclude Include="business\bondbestquote_business.h" />
+    <ClInclude Include="business\bondbestquote_ftp_upload_business.h" />
+    <ClInclude Include="business\bondbestquote_shch_ftp_upload_business.h" />
+    <ClInclude Include="business\bondcompletedquote_business.h" />
+    <ClInclude Include="business\bonddeal_business.h" />
+    <ClInclude Include="business\dcsbonddeal_business.h" />
+    <ClInclude Include="business\bondquote_business.h" />
+    <ClInclude Include="business\calculator_business.h" />
+    <ClInclude Include="business\ftpClient.h" />
+    <ClInclude Include="business\login_business.h" />
+    <ClInclude Include="business\oper_log.h" />
+    <ClInclude Include="cache\cache_manager.h" />
+    <ClInclude Include="datamanager\account_data_manager.h" />
+    <ClInclude Include="datamanager\bond_data_manager.h" />
+    <ClInclude Include="datamanager\broker_binding_data_manager.h" />
+    <ClInclude Include="datamanager\data_manager.h" />
+    <ClInclude Include="datamanager\deviated_value_data_manager.h" />
+    <ClInclude Include="datamanager\institution_data_manager.h" />
+    <ClInclude Include="datamanager\trader_data_manager.h" />
+    <ClInclude Include="DCSConnectionService.h" />
+    <ClInclude Include="excel\generateexcel.h" />
+    <ClInclude Include="MessageResendService.h" />
+    <ClInclude Include="monitor\dcsbonddeal_monitor.h" />
+    <ClInclude Include="object\yijibanbond.h" />
+    <ClInclude Include="service\bondbestquote_ftp_upload_service.h" />
+    <ClInclude Include="service\bondbestquote_service.h" />
+    <ClInclude Include="service\bondbestquote_shch_ftp_upload_service.h" />
+    <ClInclude Include="service\bondcompletedquote_service.h" />
+    <ClInclude Include="service\bonddeal_service.h" />
+    <ClInclude Include="service\dcsbonddeal_service.h" />
+    <ClInclude Include="service\bondquote_service.h" />
+    <ClInclude Include="service\login_service.h" />
+    <ClInclude Include="service\qb_sync_service.h" />
+    <ClInclude Include="service\service_manager.h" />
+    <ClInclude Include="service\sync_service.h" />
+    <ClInclude Include="sync\bondbestquote_sync.h" />
+    <ClInclude Include="sync\bonddeal_sync.h" />
+    <ClInclude Include="sync\bondquote_sync.h" />
+    <ClInclude Include="sync\bondreferquote_sync.h" />
+    <ClInclude Include="sync\chinabondvaluation_sync.h" />
+    <ClInclude Include="sync\dcsbonddeal_sync.h" />
+    <ClInclude Include="tprfa_service.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="business\Makefile.am" />
+    <None Include="cache\Makefile.am" />
+    <None Include="datamanager\Makefile.am" />
+    <None Include="Makefile.am" />
+    <None Include="monitor\Makefile.am" />
+    <None Include="Resource\ftphandler.py" />
+    <None Include="Resource\IDBBondServerCfg.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resource\log4cxx.properties" />
+    <None Include="Resource\sqlquery.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="service\Makefile.am" />
+    <None Include="sync\Makefile.am" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IDBCommon\IDBCommon.vcxproj">
+      <Project>{352504a9-c49f-4cb2-9026-5d2a4b74ce66}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="business">
+      <UniqueIdentifier>{442381fc-1440-4181-8d2f-e9cfc2d0d364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{f422b0e6-0fbe-493d-82e9-a8b45014ce01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{c945377f-cd07-420d-b891-ae7b829055ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sync">
+      <UniqueIdentifier>{238c19e7-f01c-4b29-95a8-4746b6c869fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cache">
+      <UniqueIdentifier>{83ee1eb0-e7ee-48d5-adfd-8a4050171d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="excel">
+      <UniqueIdentifier>{8d21aa17-892d-4b84-a1e3-12732b0666a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="datamanager">
+      <UniqueIdentifier>{29548023-8dc2-4b3c-bcba-ca00dd3c6e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="monitor">
+      <UniqueIdentifier>{3aeb6278-b7ec-4230-82a9-0a40a03e0f42}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="business\bondbestquote_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondbestquotecalc_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondcompletedquote_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondquote_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\login_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondbestquote_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondcompletedquote_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondquote_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\login_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\service_manager.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\sync_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\bondbestquote_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\bonddeal_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\bondquote_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\bondreferquote_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="excel\generateexcel.cpp">
+      <Filter>excel</Filter>
+    </ClCompile>
+    <ClCompile Include="cache\cache_manager.cpp">
+      <Filter>cache</Filter>
+    </ClCompile>
+    <ClCompile Include="tprfa_service.cpp" />
+    <ClCompile Include="business\bondbestquote_ftp_upload_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="service\qb_sync_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondbestquote_ftp_upload_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="business\calculator_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\ftpClient.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bondbestquote_shch_ftp_upload_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bondbestquote_shch_ftp_upload_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageResendService.cpp" />
+    <ClCompile Include="datamanager\account_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\bond_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\broker_binding_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\deviated_value_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\institution_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="datamanager\trader_data_manager.cpp">
+      <Filter>datamanager</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\chinabondvaluation_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="monitor\dcsbonddeal_monitor.cpp">
+      <Filter>monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="sync\dcsbonddeal_sync.cpp">
+      <Filter>sync</Filter>
+    </ClCompile>
+    <ClCompile Include="DCSConnectionService.cpp" />
+    <ClCompile Include="service\dcsbonddeal_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="business\dcsbonddeal_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="business\bonddeal_business.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+    <ClCompile Include="service\bonddeal_service.cpp">
+      <Filter>service</Filter>
+    </ClCompile>
+    <ClCompile Include="business\oper_log.cpp">
+      <Filter>business</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="business\bondbestquote_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondbestquotecalc_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondcompletedquote_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondquote_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\login_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondbestquote_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondcompletedquote_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondquote_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\login_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\service_manager.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\sync_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="object\yijibanbond.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\bondbestquote_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\bonddeal_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\bondquote_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\bondreferquote_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="excel\generateexcel.h">
+      <Filter>excel</Filter>
+    </ClInclude>
+    <ClInclude Include="cache\cache_manager.h">
+      <Filter>cache</Filter>
+    </ClInclude>
+    <ClInclude Include="tprfa_service.h" />
+    <ClInclude Include="business\bondbestquote_ftp_upload_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="service\qb_sync_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondbestquote_ftp_upload_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="business\calculator_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\ftpClient.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bondbestquote_shch_ftp_upload_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bondbestquote_shch_ftp_upload_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageResendService.h" />
+    <ClInclude Include="datamanager\account_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\bond_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\broker_binding_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\deviated_value_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\institution_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="datamanager\trader_data_manager.h">
+      <Filter>datamanager</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\chinabondvaluation_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor\dcsbonddeal_monitor.h">
+      <Filter>monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="sync\dcsbonddeal_sync.h">
+      <Filter>sync</Filter>
+    </ClInclude>
+    <ClInclude Include="DCSConnectionService.h" />
+    <ClInclude Include="service\dcsbonddeal_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="business\dcsbonddeal_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="business\bonddeal_business.h">
+      <Filter>business</Filter>
+    </ClInclude>
+    <ClInclude Include="service\bonddeal_service.h">
+      <Filter>service</Filter>
+    </ClInclude>
+    <ClInclude Include="business\oper_log.h">
+      <Filter>business</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\sqlquery.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="Resource\IDBBondServerCfg.xml">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="Resource\ftphandler.py">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="datamanager\Makefile.am">
+      <Filter>datamanager</Filter>
+    </None>
+    <None Include="service\Makefile.am">
+      <Filter>service</Filter>
+    </None>
+    <None Include="sync\Makefile.am">
+      <Filter>sync</Filter>
+    </None>
+    <None Include="business\Makefile.am">
+      <Filter>business</Filter>
+    </None>
+    <None Include="cache\Makefile.am">
+      <Filter>cache</Filter>
+    </None>
+    <None Include="Makefile.am" />
+    <None Include="monitor\Makefile.am">
+      <Filter>monitor</Filter>
+    </None>
+    <None Include="Resource\log4cxx.properties">
+      <Filter>Resource</Filter>
+    </None>
+  </ItemGroup>
+</Project>

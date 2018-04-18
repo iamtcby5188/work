@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E008934A-C889-4AD6-B6CA-8067B8C98552}</ProjectGuid>
+    <RootNamespace>BasicDataServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Path.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Path.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>qpidclientd.lib;qpidcommond.lib;qpidmessagingd.lib;qpidtypesd.lib;libprotobuf.lib;libprotobuf-lite.lib;libprotoc.lib;IDBCommond.lib;log4cxx.lib;mysqlcppconn.lib;sdbusd.lib;qpid_engined.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y $(SolutionDir)IDBCommon\mysqlcppconn\lib\$(Configuration)\*.dll $(TargetDir)
+xcopy /y $(ProjectDir)\Resource\*.* $(TargetDir)
+xcopy /y $(SSMQDIR)bin\Win32_vc2013_$(Configuration)\*.dll $(TargetDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>qpidclient.lib;qpidcommon.lib;qpidmessaging.lib;qpidtypes.lib;libprotobuf.lib;libprotobuf-lite.lib;libprotoc.lib;IDBCommon.lib;log4cxx.lib;mysqlcppconn.lib;sdbus.lib;qpid_engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y $(SolutionDir)IDBCommon\mysqlcppconn\lib\$(Configuration)\*.dll $(TargetDir)
+xcopy /y $(ProjectDir)\Resource\*.* $(TargetDir)
+xcopy /y $(SSMQDIR)bin\Win32_vc2013_$(Configuration)\*.dll $(TargetDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="business\Makefile.am" />
+    <None Include="cache\Makefile.am" />
+    <None Include="Makefile.am" />
+    <None Include="monitor\Makefile.am" />
+    <None Include="Resource\BasicDataServerCfg.xml" />
+    <None Include="Resource\CommonServerCfg.xml" />
+    <None Include="Resource\log4cxx.properties" />
+    <None Include="Resource\sqlquery.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="service\Makefile.am" />
+    <None Include="sync\Makefile.am" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IDBCommon\IDBCommon.vcxproj">
+      <Project>{352504a9-c49f-4cb2-9026-5d2a4b74ce66}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="business\bondbusiness.cpp" />
+    <ClCompile Include="business\productfavor_business.cpp" />
+    <ClCompile Include="cache\cache_manager.cpp" />
+    <ClCompile Include="CRMConnectionService.cpp" />
+    <ClCompile Include="CrmProto.pb.cc" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="monitor\account_monitor.cpp" />
+    <ClCompile Include="monitor\bondsmallview_monitor.cpp" />
+    <ClCompile Include="monitor\bondtrader_monitor.cpp" />
+    <ClCompile Include="monitor\brokerbindingtrader_monitor.cpp" />
+    <ClCompile Include="monitor\chinabonddeviatedvalue_monitor.cpp" />
+    <ClCompile Include="monitor\institutionrating_monitor.cpp" />
+    <ClCompile Include="monitor\tradinginstitution_monitor.cpp" />
+    <ClCompile Include="service\bondservice.cpp" />
+    <ClCompile Include="service\management_service.cpp" />
+    <ClCompile Include="service\productfavor_service.cpp" />
+    <ClCompile Include="service\service_manager.cpp" />
+    <ClCompile Include="service\sync_service.cpp" />
+    <ClCompile Include="sync\account_sync.cpp" />
+    <ClCompile Include="sync\bondsmallview_sync.cpp" />
+    <ClCompile Include="sync\bondtrader_sync.cpp" />
+    <ClCompile Include="sync\brokerbindingtrader_sync.cpp" />
+    <ClCompile Include="sync\chinabonddeviatedvalue_sync.cpp" />
+    <ClCompile Include="sync\institutionrating_sync.cpp" />
+    <ClCompile Include="sync\tradinginstitution_sync.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="business\bondbusiness.h" />
+    <ClInclude Include="business\productfavor_business.h" />
+    <ClInclude Include="cache\cache_manager.h" />
+    <ClInclude Include="CRMConnectionService.h" />
+    <ClInclude Include="CrmProto.pb.h" />
+    <ClInclude Include="monitor\account_monitor.h" />
+    <ClInclude Include="monitor\bondsmallview_monitor.h" />
+    <ClInclude Include="monitor\bondtrader_monitor.h" />
+    <ClInclude Include="monitor\brokerbindingtrader_monitor.h" />
+    <ClInclude Include="monitor\chinabonddeviatedvalue_monitor.h" />
+    <ClInclude Include="monitor\institutionrating_monitor.h" />
+    <ClInclude Include="monitor\tradinginstitution_monitor.h" />
+    <ClInclude Include="service\bondservice.h" />
+    <ClInclude Include="service\management_service.h" />
+    <ClInclude Include="service\productfavor_service.h" />
+    <ClInclude Include="service\service_manager.h" />
+    <ClInclude Include="service\sync_service.h" />
+    <ClInclude Include="sync\account_sync.h" />
+    <ClInclude Include="sync\bondsmallview_sync.h" />
+    <ClInclude Include="sync\bondtrader_sync.h" />
+    <ClInclude Include="sync\brokerbindingtrader_sync.h" />
+    <ClInclude Include="sync\chinabonddeviatedvalue_sync.h" />
+    <ClInclude Include="sync\institutionrating_sync.h" />
+    <ClInclude Include="sync\tradinginstitution_sync.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

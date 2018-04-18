@@ -1,0 +1,41 @@
+<Config>
+  <Connection>
+    <Host>tcp://172.16.66.33:3306</Host>
+    <User>artogrid</User>
+    <Password>artogrid</Password>
+    <DataBase></DataBase>
+    <PoolSize>5</PoolSize>
+  </Connection>
+  <SDBus>
+    <Main>
+      <Url>127.0.0.1</Url>
+    </Main>
+  </SDBus>
+  <Queue>
+    <Main>Queue.Bond.MarketData.1</Main>    
+  </Queue>
+  
+  <FastDB>
+    <Host>localhost</Host>
+    <ReplicatePort>21030</ReplicatePort>
+    <CacheName>MarketDataCache.1</CacheName>
+    <CacheSize>1536</CacheSize>
+    <IndexSize>124</IndexSize>
+    <WriteAccess>1</WriteAccess>
+    <WaitLockTimeoutMsec>2000</WaitLockTimeoutMsec>
+    <WorkThreads>1</WorkThreads>
+    <ParallelScanThreshold>20000</ParallelScanThreshold>
+    <ReplicatedServers>localhost:21030</ReplicatedServers>
+    <NodeId>0</NodeId>
+    <ExtensionQuantum>4</ExtensionQuantum>
+    <MonitorInterval>60</MonitorInterval>
+    <InitData>true</InitData>
+    <LogFile>FastDB.log</LogFile>
+  </FastDB>
+
+  <LogMsg>
+    <Enable>True</Enable>
+    <Destination>File</Destination>
+  </LogMsg>
+  <CommonServerCfgFilePath></CommonServerCfgFilePath>
+</Config>

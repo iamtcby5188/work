@@ -1,0 +1,228 @@
+package Crm;
+
+option java_package = "com.sumscope.crm.crm_server.entity.protobuff";
+
+//请求消息公共字段
+message CommonRequestFields
+{
+	optional string request_id = 1;//请求ID,唯一标识一个请求, 可为空
+	optional bytes username = 2;
+	optional string password = 3;
+	optional string currentAccountId = 4;
+	optional int64 crm_id = 5;//租户ID, 获取租户列表时可以不写, 填写0 则代表不区分租户直接获取全部(部分接口支持,不支持的接口会返回错误信息)
+	optional string application_type = 6;//应用类型, 固定为 IDB/ITS/PC/...
+	optional int32 page_size = 7 [default = 100];//每次获取数据量
+	optional int32 page_number = 8 [default = 0];//页码, 默认为0 获取全部数据
+}
+
+//响应消息公共字段
+message CommonResponseFields
+{
+	optional string request_id = 1;//对应请求的ID
+	optional string return_code = 2;//返回代码, 0 为成功
+	optional string return_message = 3;//返回消息
+	optional string return_count = 4;//返回结果中消息数量
+	optional string page_info = 5;//分页信息, 以 "1/4", "6/6" 的形式展现
+	optional string message_id = 6;//服务器的全局消息ID, 客户端可以通过此属性进行唯一性判断
+}
+
+//GetCrmIdList--Start
+//根据应用类型获取租户列表
+message GetCrmIdListRequest
+{
+	optional CommonRequestFields common_fields = 1;
+}
+
+message CrmIdItem
+{
+	optional string crm_id = 1;//租户ID
+	optional string application_type = 2;//应用类型
+	optional bytes crm_name = 3;//租户名称
+}
+
+message GetCrmIdListResponse
+{
+	optional CommonResponseFields common_fields = 1;
+	repeated CrmIdItem result = 2;
+}
+//GetCrmIdList--End
+//GetInstList--Start
+//根据租户ID获取机构列表
+message GetInstListRequest
+{
+	optional CommonRequestFields common_fields = 1;
+}
+
+message InstitutionItem
+{
+	optional string crm_id = 1;//租户ID
+	optional string inst_id = 2;//机构ID
+	optional string company_id = 3;//公司id
+	optional string qb_id = 4;//此机构再QB中的ID
+	optional string idb_key = 5;//此机构再IDB中的ID
+	optional bytes inst_short_name_cn = 6;//机构中文简称
+	optional string pinyin = 7;//机构中文简称拼音简写
+	optional string pinyin_full = 8;//机构中文简称拼音全写
+	optional string inst_short_name_en = 9;//机构英文简称
+	optional bytes inst_full_name_cn = 10;//机构中文全称
+	optional string inst_full_name_en = 11;//机构英文全称
+	optional string inst_code = 12;//机构代码
+	optional string inst_city_code = 13;//机构所在城市代码
+	optional bytes inst_city_value = 14;//机构所在城市名称
+	optional bytes desc = 15;//描述
+	optional string update_time = 16;//更新时间
+	optional string inst_type = 17;//机构类型
+	optional bool is_internal = 18;//是否内部机构
+}
+
+message GetInstListResponse
+{
+	optional CommonResponseFields common_fields = 1;
+	repeated InstitutionItem result = 2;//机构列表
+}
+
+//GetInstList--End
+//GetCtctList--Start
+//根据租户ID获取联系人列表
+message GetCtctListRequest
+{
+	optional CommonRequestFields common_fields = 1;
+}
+
+message AccountMappingItem
+{
+	optional string qb_id = 1;//账户与交易员关系再QB中的ID
+	optional string idb_key = 2;//账户与交易员关系再IDB中的ID
+	optional string account_id = 3;//账户ID
+	optional string team_id = 4;//所属团队ID, 如果为 -1 , 说明是部门主管/区域主管/总经理的联系人
+	optional string crm_id = 5;//租户ID
+	optional string ctct_id = 6;//联系人ID
+}
+
+
+message ContactItem
+{
+	optional string crm_id = 1;//租户ID
+	optional string ctct_id = 2;//联系人ID
+	optional string company_id = 3;//公司id
+	optional string qb_id = 4;//联系人再QB中的ID
+	optional string idb_key = 5;//联系人再IDB中的ID
+	optional bytes ctct_name = 6;//联系人姓名
+	optional string pinyin = 7;//联系人姓名拼音简写
+	optional string pinyin_full = 8;//联系人姓名拼音全写
+	optional string inst_id = 9;//所属机构ID
+	optional string inst_code = 10;//所属机构ID
+	optional string ctct_code = 11;//联系人代码
+	optional bool is_vip = 12;//是否VIP
+	optional bool is_danger = 13;//是否危险
+	optional string biz_type = 14;//业务类型
+	optional string update_time = 15;//更新时间
+	repeated AccountMappingItem account_mapping = 16;//联系人的负责人列表
+}
+
+message GetCtctListResponse
+{
+	optional CommonResponseFields common_fields = 1;
+	repeated ContactItem result = 2;//联系人列表
+}
+//GetCtctList--End
+//GetAccountList--Start
+//根据租户ID获取用户列表
+message GetAccountListRequest
+{
+	optional CommonRequestFields common_fields = 1;
+}
+
+message AccountItem
+{
+	optional string crm_id = 1;//租户ID
+	optional string account_id = 2;//账户ID
+	optional string idb_key = 3;//账户ID
+	optional string account = 4;//登录账户
+	optional string account_name = 5;//用户名
+	optional string serial_number = 6;//工号
+	optional string role_code = 7;//角色
+	repeated string team_ids = 8;//所属团队(部门)ID
+}
+
+message GetAccountListResponse
+{
+	optional CommonResponseFields common_fields = 1;
+	repeated AccountItem result = 2;
+}
+//GetAccountList--End
+//GetRoleList--Start
+//根据租户ID获取角色列表
+message GetRoleListRequest
+{
+	optional CommonRequestFields common_fields = 1;
+}
+
+message RoleItem
+{
+	optional string crm_id = 1;//租户ID
+	optional string role_code = 2;//角色代码
+	optional string role_name = 3;//角色名称
+}
+
+message GetRoleListResponse
+{
+	optional CommonResponseFields common_fields = 1;
+	repeated RoleItem result = 2;
+}
+
+//GetRoleList--End
+//GetTeamList--Start
+//根据租户ID获取团队列表
+message GetTeamListRequest
+{
+	optional CommonRequestFields common_fields = 1;
+}
+
+message TeamItem
+{
+	optional string crm_id = 1;//租户ID
+	optional string team_id = 2;//团队ID
+	optional bytes team_name = 3;//团队名称
+	optional bytes team_code = 4;//团队代码
+	optional bytes desc = 5;//描述
+}
+
+message GetTeamListResponse
+{
+	optional CommonResponseFields common_fields = 1;
+	repeated TeamItem result = 2;
+}
+//GetTeamList--End
+
+
+//UpdateEvent 的定义
+message AccountUpdateEvent
+{
+	optional string eventType = 1;//事件类型, A/U/D
+	optional AccountItem account = 2;//更新具体内容
+}
+
+message TeamUpdateEvent
+{
+	optional string eventType = 1;//事件类型, A/U/D
+	optional TeamItem team = 2;//更新具体内容
+}
+
+message InstitutionUpdateEvent
+{
+	optional string eventType = 1;//事件类型, A/U/D
+	optional InstitutionItem institution = 2;//更新具体内容
+}
+
+message ContactUpdateEvent
+{
+	optional string eventType = 1;//事件类型, A/U/D
+	optional ContactItem contact = 2;//更新具体内容
+}
+
+message ManagerUpdateEvent
+{
+	optional string eventType = 1;//事件类型, A/U/D
+	repeated AccountMappingItem mappings = 2;//更新具体内容
+}

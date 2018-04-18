@@ -1,0 +1,15 @@
+<Config>
+  <Connection>
+    <Host>tcp://192.168.1.102:3306</Host>
+    <User>artogrid</User>
+    <Password>artogrid</Password>
+    <DataBase></DataBase>
+    <PoolSize>5</PoolSize>
+  </Connection>
+  
+  <SDBus>
+    <Main>
+      <Url>127.0.0.1</Url>
+    </Main>
+  </SDBus>
+</Config>
